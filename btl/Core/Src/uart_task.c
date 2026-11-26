@@ -30,9 +30,9 @@ extern UART_HandleTypeDef huart1;
 #define UART_HUM_MIN               0.0f
 #define UART_HUM_MAX               100.0f
 #define UART_MQ135_MIN             0.0f
-#define UART_MQ135_MAX             10000.0f
-#define UART_PRESS_MIN             800.0f
-#define UART_PRESS_MAX             1200.0f
+#define UART_MQ135_MAX             250000.0f
+#define UART_PRESS_MIN             500.0f
+#define UART_PRESS_MAX             2000.0f
 
 static osThreadId_t uartTaskHandle;
 static osMessageQueueId_t uartRxQueueHandle;
@@ -359,7 +359,7 @@ static void UART_ProcessCommand(char *command)
 						(floatValue < UART_MQ135_MIN) ||
 						(floatValue > UART_MQ135_MAX))
 				{
-						UART_SendReply("ERROR: MQ135 range 0 to 10000 ppm.\r\n");
+						UART_SendReply("ERROR: MQ135 range 0 to 250000 ppm.\r\n");
 						return;
 				}
 
@@ -371,7 +371,7 @@ static void UART_ProcessCommand(char *command)
             (floatValue < UART_PRESS_MIN) ||
             (floatValue > UART_PRESS_MAX))
         {
-            UART_SendReply("ERROR: PRESS range 800 to 1200 hPa.\r\n");
+            UART_SendReply("ERROR: PRESS range 500 to 2000 hPa.\r\n");
             return;
         }
 
