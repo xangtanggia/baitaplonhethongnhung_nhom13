@@ -73,15 +73,15 @@ static uint8_t Settings_Validate(const SettingsData_t *data)
     }
 
     if (!isfinite(data->pressure_limit) ||
-        data->pressure_limit < 800.0f ||
-        data->pressure_limit > 1200.0f)
+        data->pressure_limit < 500.0f ||
+        data->pressure_limit > 2000.0f)
     {
         return 0U;
     }
 
     if (!isfinite(data->mq135_limit) ||
         data->mq135_limit < 0.0f ||
-        data->mq135_limit > 10000.0f)
+        data->mq135_limit > 250000.0f)
     {
         return 0U;
     }

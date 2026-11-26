@@ -90,16 +90,18 @@ static void Button_AdjustThreshold(int8_t direction)
     {
         return;
     }
-
-
-    if (selectedThreshold == 3U)
-    {
-        delta = (int16_t)(direction * 50);
-    }
-    else
-    {
-        delta = (int16_t)direction;
-    }
+		if (selectedThreshold == 3U)
+		{
+				delta = (int16_t)(direction * 500);
+		}
+		else if (selectedThreshold == 4U)
+		{
+				delta = (int16_t)(direction * 10);
+		}
+		else
+		{
+				delta = (int16_t)direction;
+		}
 
     if (AppData_AdjustThreshold(thresholdTypes[selectedThreshold],
                                 delta) != 0U)

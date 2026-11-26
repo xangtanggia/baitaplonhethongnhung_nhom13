@@ -53,11 +53,11 @@ static uint8_t ThresholdValueValid(ThresholdType_t type, float value)
             return (value >= 0.0f && value <= 100.0f) ? 1U : 0U;
 
         case THRESHOLD_MQ135:
-						return (value >= 0.0f && value <= 10000.0f)
+						return (value >= 0.0f && value <= 250000.0f)
 									 ? 1U : 0U;
 
         case THRESHOLD_PRESSURE:
-            return (value >= 800.0f && value <= 1200.0f) ? 1U : 0U;
+            return (value >= 500.0f && value <= 2000.0f) ? 1U : 0U;
 
         default:
             return 0U;
@@ -223,13 +223,13 @@ uint8_t AppData_AdjustThreshold(ThresholdType_t type, int16_t delta)
 				case THRESHOLD_MQ135:
 						newValue = alarmThresholds.mq135_limit + (float)delta;
 						minValue = 0.0f;
-						maxValue = 10000.0f;
+						maxValue = 250000.0f;
 						break;
 
         case THRESHOLD_PRESSURE:
             newValue = alarmThresholds.pressure_limit + (float)delta;
-            minValue = 800.0f;
-            maxValue = 1200.0f;
+            minValue = 500.0f;
+            maxValue = 2000.0f;
             break;
 
         default:
